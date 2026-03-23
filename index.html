@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosun Kanti Datta - Portfolio</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        black: '#000000',
+                        white: '#FFFFFF',
+                        gray: {
+                            400: '#9ca3af',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            700: '#374151',
+                            800: '#1f2937',
+                            900: '#111827',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        body {
+            background-color: #050505;
+            color: #FFFFFF;
+            overflow-x: hidden;
+        }
+        
+        /* Floating words container */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .floating-word {
+            position: absolute;
+            color: #999999;
+            opacity: 0.12;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            white-space: nowrap;
+            user-select: none;
+            transition: opacity 0.3s ease;
+            pointer-events: auto; /* Allow hover */
+            cursor: default;
+        }
+        
+        .floating-word:hover {
+            opacity: 0.4 !important;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222222;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444444;
+        }
+        
+        .section-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            text-shadow: 0 0 20px rgba(255,255,255,0.05);
+        }
+
+        .card-hover {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            background-color: #1a1a1a !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-white selection:text-black">
+
+    <div id="canvas-container"></div>
+
+    <main id="app-content" class="relative z-10 max-w-5xl mx-auto px-6 sm:px-12 py-24 space-y-32">
+        <!-- Content injected via JS -->
+    </main>
+
+    <script>
+        // =========================================================================
+        // EDIT HERE - DO NOT TOUCH BELOW
+        // =========================================================================
+        
+        const PORTFOLIO_DATA = {
+            profile: {
+                name: "Prosun Kanti Datta",
+                headline: "Aspiring Machine Learning & Computational Physics Researcher",
+                subheadline: "Building projects, conducting research, and sharing knowledge.",
+                image: "https://image2url.com/r2/default/images/1774275001797-b15ef46c-a0d7-4026-ae93-7b799b80dd8d.jpg", // Removed grayscale filter from URL
+                cvLink: "#", // Replace with actual CV path
+                email: "prosun07a@gmail.com",
+                github: "https://github.com/prosun07a-ML",
+                linkedin: "https://linkedin.com/in/prosun-kanti-datta"
+                
+            
+            },
+            projects: [
+                {
+                    title: "Neural Network from Scratch",
+                    description: "Implemented a fully connected neural network in pure NumPy — forward/backward propagation, gradient descent, and activation functions — achieving 97.4% accuracy on MNIST.",
+                    tech: ["Python", "NumPy", "Matplotlib"],
+                    link: "#",
+                    featured: true
+                },
+                {
+                    title: "Quantum Harmonic Oscillator Simulation",
+                    description: "Numerically solved the time-independent Schrödinger equation for quantum harmonic oscillator using finite difference method, visualizing wavefunctions and probability densities.",
+                    tech: ["Python", "SciPy", "NumPy", "Matplotlib"],
+                    link: "#",
+                    featured: true
+                },
+                {
+                    title: "Particle Physics Event Classifier",
+                    description: "Built a binary classifier to distinguish signal vs background events in particle physics data using gradient boosting and feature engineering on CERN open datasets.",
+                    tech: ["Python", "XGBoost", "Pandas", "Scikit-learn"],
+                    link: "#",
+                    featured: false
+                },
+                {
+                    title: "Celestial Body Orbit Simulator",
+                    description: "N-body gravitational simulation using RK4 integration to model solar system dynamics, visualized in real-time with a custom canvas renderer.",
+                    tech: ["Python", "NumPy", "Canvas API"],
+                    link: "#",
+                    featured: false
+                },
+                {
+                    title: "CuriosityOS a Sample of a Organizational Website.",
+                    description: "This was just an approach for an highend system but unfortunately the project was stopped due to some internal reasons. But the incompleted website is live through netlify here is the 'link : https://curiosityoscirl.netlify.app/  '  ",
+                    tech: ["Html", "Css", "JavaScript", "PocketBase", "Netlify-DomainHost"],
+                    link: "https://github.com/prosun07a-ML/CuriosityOS",
+                    featured: false
+                },
+                {
+                    title: "Computational Physics with Newtonian Mechanics",
+                    description: "",
+                    tech: ["Python", "NumPy", "SciPy", "Matplotlib"],
+                    link: "https://github.com/prosun07a-ML/Computational_Physics",
+                    featured: true
+                }
+            ],
+            research: [
+                {
+                    title: "Physics-Informed ML for Solar PV Microgrids: A Techno-Economic Resilience Study of a Primary Surgical Facility in Sylhet, Bangladesh",
+                    status: "Ongoing",
+                    category: "Independent Research",
+                    description: "This research develops a Physics-Informed Machine Learning (PIML) framework to optimize solar microgrid resilience for critical healthcare infrastructure. By integrating environmental physics—such as thermal degradation and soiling patterns—with techno-economic modeling, the project provides a high-fidelity blueprint for ensuring uninterrupted power in surgical facilities. Based on a case study in Sylhet, Bangladesh, this work bridges the gap between semiconductor science and financial sustainability to secure energy autonomy for life-saving medical services.",
+                    contribution: "Physics-Informed ML (PIML) Architecture, Solar PV Digital Twin Development, Environmental Degradation Modeling, NASA POWER API Data Engineering, Irradiance & Temperature Trajectory Analysis, Resilience & Autonomy Stress-Testing.",
+                    link: ""
+                },
+                {
+                    title: "Numerical Methods for Quantum Field Theory",
+                    status: "Completed",
+                    category: "Academic Study",
+                    description: "Systematic study of lattice QFT techniques and their computational implementations, focusing on discretization schemes and error analysis for path integral computations.",
+                    contribution: "Implementation of lattice QCD toy models, analysis of finite-size effects.",
+                    link: "#"
+                },
+                {
+                    title: "Deep Learning for Time-Series Anomaly Detection",
+                    status: "In Progress",
+                    category: "Collaborative Research",
+                    description: "Investigating LSTM and Transformer-based autoencoders for detecting anomalies in scientific instrument time-series data, with applications in astrophysics monitoring systems.",
+                    contribution: "Model architecture design, training pipeline, evaluation metrics.",
+                    link: "#"
+                }
+            ],
+            blog: [
+                {
+                    title: "Understanding Backpropagation from First Principles",
+                    tags: ["Machine Learning", "Math", "Python"],
+                    description: "A deep dive into how gradient descent propagates error signals through neural network layers — explained with calculus, intuition, and code.",
+                    date: "June 2025",
+                    readTime: "8 min read",
+                    link: "#"
+                },
+                {
+                    title: "Why Physics Intuition Makes You a Better ML Engineer",
+                    tags: ["Physics", "Machine Learning", "Opinion"],
+                    description: "Drawing parallels between physical systems and machine learning models: energy landscapes, phase transitions, and why physicists make excellent data scientists.",
+                    date: "May 2025",
+                    readTime: "6 min read",
+                    link: "#"
+                },
+                {
+                    title: "Setting Up a Research-Grade Python Environment in 2025",
+                    tags: ["Python", "Tools", "Tutorial"],
+                    description: "My personal toolkit for scientific computing: from environment management to GPU acceleration and reproducible experiment tracking.",
+                    date: "April 2025",
+                    readTime: "5 min read",
+                    link: "#"
+                }
+            ],
+            floatingWords: [
+                "Python", "Machine Learning", "NumPy", "Pandas", "SciPy", 
+                "Matplotlib", "PyTorch", "TensorFlow", "Scikit-learn",
+                "Computational Physics", "Quantum Mechanics", "Data Science",
+                "Deep Learning", "Neural Networks", "CUDA", "C++",
+                "Algorithms", "Data Structures", "Optimization", "Linear Algebra"
+            ]
+        };
+
+        // =========================================================================
+        // DO NOT TOUCH BELOW THIS LINE
+        // =========================================================================
+
+        const appContent = document.getElementById('app-content');
+        
+        function render() {
+            const { profile, projects, research, blog } = PORTFOLIO_DATA;
+            
+            appContent.innerHTML = `
+                <!-- Hero Section -->
+                <section id="hero" class="min-h-[80vh] flex flex-col justify-center items-start pt-10">
+                    <div class="flex flex-col-reverse md:flex-row items-start md:items-center gap-12 w-full">
+                        <div class="flex-1 space-y-6">
+                            <h1 class="section-heading text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-tight text-white">
+                                ${profile.name}
+                            </h1>
+                            <h2 class="text-xl sm:text-2xl text-gray-200 font-light max-w-2xl">
+                                ${profile.headline}
+                            </h2>
+                            <p class="text-base sm:text-lg text-gray-300 max-w-xl leading-relaxed">
+                                ${profile.subheadline}
+                            </p>
+                            <div class="pt-6 flex flex-wrap gap-4">
+                                <a href="#projects" class="inline-block px-6 py-3 border border-white/15 hover:border-white hover:bg-white hover:text-black transition-all duration-300 text-sm tracking-wider uppercase font-medium">
+                                    Project & Research
+                                </a>
+                                <a href="${profile.cvLink}" target="_blank" class="inline-block px-6 py-3 border border-transparent hover:border-white/15 transition-all duration-300 text-sm tracking-wider uppercase font-medium text-gray-300 hover:text-white">
+                                    My CV
+                                </a>
+                            </div>
+                        </div>
+                        <div class="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 shrink-0 rounded-full overflow-hidden border border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)]" style="filter: none !important; opacity: 1 !important; mix-blend-mode: normal !important;">
+                            <img src="${profile.image}" alt="${profile.name}" class="w-full h-full object-cover" style="filter: none !important; opacity: 1 !important;" />
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" class="space-y-12">
+                    <div class="space-y-4">
+                        <span class="text-gray-300 text-xs font-bold tracking-[0.2em] uppercase">What I Build</span>
+                        <h3 class="section-heading text-4xl sm:text-5xl font-bold tracking-tight text-white">Projects</h3>
+                        <p class="text-gray-200 max-w-2xl text-lg">A selection of ML experiments, physics simulations, and software tools I've crafted.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${projects.map(p => `
+                            <div class="card-hover group flex flex-col p-8 rounded-2xl border border-white/15 bg-[#111111] relative overflow-hidden">
+                                <div class="flex justify-between items-start mb-8">
+                                    <div class="flex gap-2">
+                                        ${p.featured ? `
+                                            <span class="flex items-center gap-1 px-2.5 py-1 rounded-full border border-white/25 bg-white/10 text-white text-[10px] font-bold uppercase tracking-wider">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                                Featured
+                                            </span>
+                                        ` : ''}
+                                    </div>
+                                    <a href="${p.link}" target="_blank" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/15 bg-white/5 text-gray-300 hover:text-white hover:bg-white/10 transition-all text-xs font-medium">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                                        GitHub
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                    </a>
+                                </div>
+                                
+                                <h4 class="text-xl font-bold text-white mb-4 leading-tight">${p.title}</h4>
+                                <p class="text-gray-300 text-sm leading-relaxed mb-8 flex-grow">${p.description}</p>
+                                
+                                <div class="flex flex-wrap gap-2 mt-auto">
+                                    ${p.tech.map(t => `<span class="text-[11px] font-medium px-2.5 py-1 bg-white/5 text-gray-200 rounded-md border border-white/15">${t}</span>`).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <!-- Research Section -->
+                <section id="research" class="space-y-12">
+                    <div class="space-y-4">
+                        <span class="text-gray-300 text-xs font-bold tracking-[0.2em] uppercase">Academic & Independent</span>
+                        <h3 class="section-heading text-4xl sm:text-5xl font-bold tracking-tight text-white">Research</h3>
+                        <p class="text-gray-200 max-w-2xl text-lg">Investigations at the intersection of physics, computation, and machine learning.</p>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        ${research.map(r => `
+                            <div class="card-hover p-8 rounded-2xl border border-white/15 bg-[#111111]">
+                                <div class="flex gap-6">
+                                    <div class="hidden sm:flex shrink-0 w-12 h-12 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-gray-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.5"/><path d="M14 2v7.5"/><path d="M8.5 2h7"/><path d="M14 11.5c.6 0 1 .4 1 1v2.5c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-2.5c0-.6.4-1 1-1h4z"/><path d="M9 16v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2"/><path d="M10 9.5h4"/></svg>
+                                    </div>
+                                    <div class="flex-grow space-y-4">
+                                        <div class="flex flex-wrap items-center gap-3">
+                                            <h4 class="text-xl font-bold text-white">${r.title}</h4>
+                                            <span class="px-2.5 py-0.5 rounded-full border border-white/25 bg-white/10 text-white text-[10px] font-bold uppercase tracking-wider">
+                                                ${r.status}
+                                            </span>
+                                        </div>
+                                        <div class="text-xs font-bold text-gray-300 uppercase tracking-[0.15em]">${r.category}</div>
+                                        <p class="text-gray-300 text-sm leading-relaxed max-w-3xl">${r.description}</p>
+                                        
+                                        <div class="mt-6 flex items-start gap-3 p-4 rounded-xl border border-white/15 bg-white/[0.02]">
+                                            <div class="shrink-0 text-gray-300 mt-0.5">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                            </div>
+                                            <p class="text-xs text-gray-300 leading-relaxed">
+                                                <span class="text-white font-bold mr-1">Contribution:</span> ${r.contribution}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <!-- Blog Section -->
+                <section id="blog" class="space-y-12">
+                    <div class="space-y-4">
+                        <span class="text-gray-300 text-xs font-bold tracking-[0.2em] uppercase">Thoughts & Tutorials</span>
+                        <h3 class="section-heading text-4xl sm:text-5xl font-bold tracking-tight text-white">Blog & Writeups</h3>
+                        <p class="text-gray-200 max-w-2xl text-lg">Notes on machine learning, physics, and the craft of scientific computing.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${blog.map(b => `
+                            <a href="${b.link}" target="_blank" class="card-hover group flex flex-col p-8 rounded-2xl border border-white/15 bg-[#111111] relative">
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    ${b.tags.map(t => `<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded border border-white/15 bg-white/5 text-gray-300">${t}</span>`).join('')}
+                                </div>
+                                
+                                <h4 class="text-xl font-bold text-white mb-4 leading-tight">${b.title}</h4>
+                                <p class="text-gray-300 text-sm leading-relaxed mb-8 flex-grow">${b.description}</p>
+                                
+                                <div class="flex items-center justify-between pt-6 border-t border-white/15">
+                                    <div class="flex items-center gap-4 text-[10px] font-mono text-gray-300 uppercase tracking-widest">
+                                        <span class="flex items-center gap-1.5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                            ${b.date}
+                                        </span>
+                                        <span class="flex items-center gap-1.5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                            ${b.readTime}
+                                        </span>
+                                    </div>
+                                    <div class="text-gray-300 group-hover:text-white group-hover:translate-x-1 transition-all duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </div>
+                                </div>
+                            </a>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="space-y-12 pt-12 pb-24 border-t border-white/15">
+                    <div class="space-y-4">
+                        <span class="text-gray-300 text-xs font-bold tracking-[0.2em] uppercase">Let's Connect</span>
+                        <h3 class="section-heading text-4xl sm:text-5xl font-bold tracking-tight text-white">Contact</h3>
+                        <p class="text-gray-200 max-w-2xl text-lg">Open to research collaborations, project discussions, or just a good conversation about ML and physics.</p>
+                    </div>
+
+                    <p class="text-gray-300 text-sm">Reach out through any of these channels — I read and reply to all messages.</p>
+
+                    <div class="grid grid-cols-1 gap-4 max-w-2xl">
+                        <!-- Email Card -->
+                        <a href="mailto:${profile.email}" class="card-hover group flex items-center p-6 rounded-2xl border border-white/15 bg-[#111111]">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-xl border border-white/15 bg-white/5 text-gray-300 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            </div>
+                            <div class="ml-6 flex-grow">
+                                <div class="text-[10px] font-bold text-gray-300 uppercase tracking-[0.15em] mb-1">Email</div>
+                                <div class="text-white font-medium">${profile.email}</div>
+                            </div>
+                            <div class="text-gray-300 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                            </div>
+                        </a>
+
+                        <!-- GitHub Card -->
+                        <a href="${profile.github}" target="_blank" class="card-hover group flex items-center p-6 rounded-2xl border border-white/15 bg-[#111111]">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-xl border border-white/15 bg-white/5 text-gray-300 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                            </div>
+                            <div class="ml-6 flex-grow">
+                                <div class="text-[10px] font-bold text-gray-300 uppercase tracking-[0.15em] mb-1">GitHub</div>
+                                <div class="text-white font-medium">prosun07a-ML</div>
+                            </div>
+                            <div class="text-gray-300 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                            </div>
+                        </a>
+
+                        <!-- LinkedIn Card -->
+                        <a href="${profile.linkedin}" target="_blank" class="card-hover group flex items-center p-6 rounded-2xl border border-white/15 bg-[#111111]">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-xl border border-white/15 bg-white/5 text-gray-300 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                            </div>
+                            <div class="ml-6 flex-grow">
+                                <div class="text-[10px] font-bold text-gray-300 uppercase tracking-[0.15em] mb-1">LinkedIn</div>
+                                <div class="text-white font-medium">Connect with me</div>
+                            </div>
+                            <div class="text-gray-300 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                            </div>
+                        </a>
+
+                          <!-- Medium Card -->
+                        <a href="${profile.medium}" target="_blank" class="card-hover group flex items-center p-6 rounded-2xl border border-white/15 bg-[#111111]">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-xl border border-white/15 bg-white/5 text-gray-300 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.37 7.037c0-2.277 4.47-4.123 9.986-4.123s9.986 1.846 9.986 4.123-4.47 4.123-9.986 4.123-9.986-1.846-9.986-4.123zm4.44 0c0 1.518 2.483 2.748 5.546 2.748s5.546-1.23 5.546-2.748-2.483-2.748-5.546-2.748-5.546 1.23-5.546 2.748zm8.934 0c0 .979-.794 1.773-1.773 1.773s-1.773-.794-1.773-1.773.794-1.773 1.773-1.773 1.773.794 1.773 1.773zM.285 7.037c0 1.977 1.96 3.58 4.378 3.58 2.417 0 4.378-1.603 4.378-3.58S7.08 3.457 4.663 3.457c-2.417 0-4.378 1.603-4.378 3.58zm1.622 0c0 1.246 1.234 2.256 2.756 2.256 1.522 0 2.756-1.01 2.756-2.256S6.185 4.78 4.663 4.78c-1.522 0-2.756 1.01-2.756 2.256z"/></svg>
+                            </div>
+                            <div class="ml-6 flex-grow">
+                                <div class="text-[10px] font-bold text-gray-300 uppercase tracking-[0.15em] mb-1">Medium</div>
+                                <div class="text-white font-medium">Read my articles</div>
+                            </div>
+                            <div class="text-gray-300 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            `;
+        }
+
+        function initFloatingWords() {
+            const container = document.getElementById('canvas-container');
+            const words = PORTFOLIO_DATA.floatingWords;
+            const numWords = 30; // Number of floating words
+            
+            for (let i = 0; i < numWords; i++) {
+                const wordEl = document.createElement('div');
+                wordEl.className = 'floating-word';
+                wordEl.innerText = words[Math.floor(Math.random() * words.length)];
+                
+                // Randomize initial state
+                const startX = Math.random() * window.innerWidth;
+                const startY = Math.random() * window.innerHeight;
+                const fontSize = 12 + Math.random() * 28; // 12px to 40px
+                const depth = Math.random(); // 0 (far) to 1 (near)
+                
+                wordEl.style.left = `${startX}px`;
+                wordEl.style.top = `${startY}px`;
+                wordEl.style.fontSize = `${fontSize}px`;
+                wordEl.style.filter = `blur(${(1 - depth) * 4}px)`;
+                
+                // Base opacity depends on depth (closer = slightly more visible)
+                const baseOpacity = 0.08 + (depth * 0.12);
+                wordEl.style.opacity = baseOpacity;
+                wordEl.dataset.baseOpacity = baseOpacity; // Store for hover reset
+                
+                container.appendChild(wordEl);
+                
+                animateWord(wordEl);
+            }
+        }
+
+        function animateWord(el) {
+            // Randomize movement
+            const duration = 30 + Math.random() * 60; // 30s to 90s
+            const moveX = (Math.random() > 0.5 ? 1 : -1) * (100 + Math.random() * 300);
+            const moveY = (Math.random() > 0.5 ? 1 : -1) * (50 + Math.random() * 150);
+            const rotation = -10 + Math.random() * 20;
+            
+            gsap.to(el, {
+                x: `+=${moveX}`,
+                y: `+=${moveY}`,
+                rotation: rotation,
+                duration: duration,
+                ease: "none",
+                onComplete: () => {
+                    // Fade out, reposition, fade in
+                    gsap.to(el, {
+                        opacity: 0,
+                        duration: 2,
+                        onComplete: () => {
+                            el.style.left = `${Math.random() * window.innerWidth}px`;
+                            el.style.top = `${Math.random() * window.innerHeight}px`;
+                            gsap.set(el, { x: 0, y: 0, rotation: 0 });
+                            
+                            gsap.to(el, {
+                                opacity: el.dataset.baseOpacity,
+                                duration: 2,
+                                onComplete: () => animateWord(el)
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        function initScrollAnimations() {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Fade in sections on scroll
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                gsap.fromTo(section, 
+                    { y: 40, opacity: 0 },
+                    { 
+                        y: 0, 
+                        opacity: 1, 
+                        duration: 1.2, 
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 85%",
+                        }
+                    }
+                );
+            });
+
+            // Subtle parallax for the floating words container
+            gsap.to('#canvas-container', {
+                yPercent: 15,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 1
+                }
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            render();
+            initFloatingWords();
+            initScrollAnimations();
+            
+            // Handle window resize for floating words
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    const container = document.getElementById('canvas-container');
+                    container.innerHTML = '';
+                    initFloatingWords();
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
