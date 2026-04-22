@@ -1,636 +1,1132 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prosun Kanti Datta - Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+<!-- ═══ SEO: Primary ═══ -->
+<title>Prosun Datta — PIML Researcher & Founder, Dynexly</title>
+<meta name="description" content="Prosun Datta (Prosun Kanti Datta) — Independent researcher in Physics-Informed Machine Learning. Founder & Executive Director of Dynexly. Building ML systems grounded in physical law. Sylhet, Bangladesh.">
+<meta name="keywords" content="Prosun Datta, Prosun Kanti Datta, PIML, Physics-Informed Machine Learning, Dynexly, Machine Learning Researcher, Computational Physics, Bangladesh, Sylhet">
+<meta name="author" content="Prosun Kanti Datta">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://prosun07a.github.io/">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        accent: {
-                            DEFAULT: '#7c3aed',
-                            dark: '#6d28d9',
-                        },
-                        slate: {
-                            50: '#f8fafc',
-                            600: '#475569',
-                            900: '#0f172a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+<!-- ═══ SEO: Open Graph ═══ -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://prosun07a.github.io/">
+<meta property="og:title"       content="Prosun Datta — PIML Researcher & Founder">
+<meta property="og:description" content="Independent researcher in Physics-Informed Machine Learning. Founder of Dynexly. Research to product pipeline. Sylhet, Bangladesh.">
+<meta property="og:image"       content="https://i.ibb.co.com/q3vbgWNt/CEO-pf2-1.png">
+<meta property="og:site_name"   content="Prosun Datta">
+<meta property="og:locale"      content="en_US">
 
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- ═══ SEO: Twitter Card ═══ -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:url"         content="https://prosunkdatta.github.io/">
+<meta name="twitter:title"       content="Prosun Datta — PIML Researcher & Founder">
+<meta name="twitter:description" content="Physics-Informed Machine Learning researcher. Founder of Dynexly. Sylhet, Bangladesh.">
+<meta name="twitter:image"       content="https://i.ibb.co.com/q3vbgWNt/CEO-pf2-1.png">
 
-    <style>
-        body {
-            background-color: #f8fafc;
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 40px 40px;
-            color: #0f172a;
-            overflow-x: hidden;
-        }
+<!-- ═══ SEO: JSON-LD Structured Data ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Prosun Kanti Datta",
+  "alternateName": "Prosun Datta",
+  "url": "https://prosunkdatta.github.io/",
+  "image": "https://i.ibb.co.com/q3vbgWNt/CEO-pf2-1.png",
+  "email": "prosunkdatta@gmail.com",
+  "jobTitle": "Founder & Executive Director",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Dynexly",
+    "description": "Youth-led open-source research collective"
+  },
+  "knowsAbout": [
+    "Physics-Informed Machine Learning",
+    "Deep Learning",
+    "Computational Physics",
+    "Neural Networks",
+    "Scientific Computing"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sylhet",
+    "addressCountry": "BD"
+  },
+  "sameAs": [
+    "https://github.com/prosun07a",
+    "https://www.linkedin.com/in/prosun07a/",
+    "https://medium.com/@prosun07a"
+  ]
+}
+</script>
 
-        /* Floating words container */
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-        }
+<!-- ═══ Favicon (set dynamically from profile image) ═══ -->
+<link rel="icon" id="favicon" type="image/png" href="https://i.ibb.co.com/q3vbgWNt/CEO-pf2-1.png">
 
-        .floating-word {
-            position: absolute;
-            color: #0f172a;
-            opacity: 0.08;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            white-space: nowrap;
-            user-select: none;
-            transition: opacity 0.3s ease;
-            pointer-events: auto;
-            /* Allow hover */
-            cursor: default;
-            filter: blur(1px);
-        }
+<!-- ═══ Fonts ═══ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-        .floating-word:hover {
-            opacity: 0.2 !important;
-        }
+<!-- ═══ GSAP ═══ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
+<style>
+/* ═══════════════════════════════════════
+   TOKENS — original white/purple palette
+═══════════════════════════════════════ */
+:root {
+  --bg:      #f8fafc;
+  --purple:  #7c3aed;
+  --pur-d:   #6d28d9;
+  --pur-lt:  rgba(124,58,237,0.07);
+  --pur-b:   rgba(124,58,237,0.18);
+  --t1:      #0f172a;
+  --t2:      #475569;
+  --t3:      #94a3b8;
+  --card:    #ffffff;
+  --cb:      rgba(15,23,42,0.08);
+  --fd:      'Space Grotesk', sans-serif;
+  --fb:      'Inter', sans-serif;
+  --fm:      'JetBrains Mono', monospace;
+}
 
-        ::-webkit-scrollbar-track {
-            background: #f8fafc;
-        }
+/* ═══════════════════════════════════════
+   BASE
+═══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background-color:#f8fafc;
+  background-image:radial-gradient(#e2e8f0 1px,transparent 1px);
+  background-size:40px 40px;
+  color:var(--t1);
+  font-family:var(--fb);
+  font-size:15px;
+  line-height:1.75;
+  overflow-x:hidden;
+}
+::selection{background:#ffffff;color:#000000}
 
-        ::-webkit-scrollbar-thumb {
-            background: #e2e8f0;
-            border-radius: 3px;
-        }
+/* ═══════════════════════════════════════
+   SCROLLBAR — original
+═══════════════════════════════════════ */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#f8fafc}
+::-webkit-scrollbar-thumb{background:#e2e8f0;border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:#cbd5e1}
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #cbd5e1;
-        }
+/* ═══════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════ */
+#progress{
+  position:fixed;top:0;left:0;height:2px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--purple),#a78bfa);
+  box-shadow:0 0 8px rgba(124,58,237,0.4);
+  transition:width .08s linear;
+}
 
-        .section-heading {
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: -0.02em;
-        }
+/* ═══════════════════════════════════════
+   FLOATING WORDS BACKGROUND — original
+═══════════════════════════════════════ */
+#canvas-container{
+  position:fixed;top:0;left:0;width:100vw;height:100vh;
+  z-index:0;pointer-events:none;
+}
+.floating-word{
+  position:absolute;color:var(--t1);opacity:0.07;
+  font-family:var(--fb);font-weight:500;
+  white-space:nowrap;user-select:none;
+  pointer-events:auto;cursor:default;filter:blur(1px);
+  transition:opacity .3s ease;
+}
+.floating-word:hover{opacity:0.18!important}
 
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            background-color: #ffffff;
-            border: 1px solid rgba(15, 23, 42, 0.08);
-        }
+/* ═══════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;
+  background:rgba(248,250,252,0);backdrop-filter:blur(0);
+  border-bottom:1px solid transparent;
+  transition:background .35s,backdrop-filter .35s,border-color .35s;
+}
+#nav.solid{
+  background:rgba(248,250,252,0.92);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom-color:rgba(15,23,42,0.07);
+}
+.nw{
+  max-width:1100px;margin:0 auto;padding:0 44px;
+  height:100%;display:flex;align-items:center;justify-content:space-between;
+}
+/* Logo */
+.logo{
+  font-family:var(--fd);font-size:18px;font-weight:700;
+  color:var(--t1);text-decoration:none;
+  display:flex;align-items:center;gap:8px;letter-spacing:-.02em;
+}
+.ldot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--purple);box-shadow:0 0 8px rgba(124,58,237,0.5);
+  animation:lp 2.5s ease-in-out infinite;
+}
+@keyframes lp{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.65)}}
 
-        .card-hover:hover {
-            transform: translateY(-6px);
-            border-color: #7c3aed;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-        }
+/* Nav links */
+.nlinks{display:flex;align-items:center;gap:2px}
+.nl{
+  font-family:var(--fm);font-size:11px;color:var(--t3);
+  text-decoration:none;padding:7px 11px;border-radius:6px;
+  transition:color .2s,background .2s;display:flex;align-items:center;gap:4px;
+}
+.ni{color:var(--purple);font-size:9px}
+.nl:hover,.nl.on{color:var(--t1);background:var(--pur-lt)}
+.nl.on{color:var(--purple)}
+.ncv{
+  font-family:var(--fm);font-size:11px;color:var(--purple);
+  text-decoration:none;border:1px solid var(--pur-b);
+  padding:7px 16px;border-radius:6px;margin-left:10px;
+  transition:background .2s,box-shadow .2s;
+}
+.ncv:hover{background:var(--pur-lt);box-shadow:0 0 16px rgba(124,58,237,.15)}
 
-        .accent-link {
-            color: #7c3aed;
-            position: relative;
-            text-decoration: none;
-        }
+/* Hamburger — unique style */
+.hbg{
+  display:none;cursor:pointer;background:none;border:none;
+  padding:6px;flex-direction:column;justify-content:center;gap:0;
+  position:relative;width:32px;height:32px;
+}
+.hbg-line{
+  position:absolute;left:5px;
+  height:1.5px;background:var(--t2);border-radius:2px;
+  transition:all .32s cubic-bezier(0.4,0,0.2,1);
+}
+.hbg-line:nth-child(1){width:22px;top:9px}
+.hbg-line:nth-child(2){width:14px;top:15px;background:var(--purple)}
+.hbg-line:nth-child(3){width:22px;top:21px}
+.hbg.open .hbg-line:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hbg.open .hbg-line:nth-child(2){opacity:0;transform:translateX(8px)}
+.hbg.open .hbg-line:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
 
-        .accent-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: #7c3aed;
-            transition: width 0.3s ease;
-        }
+@media(max-width:768px){
+  .nw{padding:0 20px}
+  .nlinks{
+    display:none;position:absolute;top:64px;left:0;right:0;
+    flex-direction:column;align-items:flex-start;gap:2px;
+    background:rgba(248,250,252,0.97);backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--cb);padding:14px 20px 20px;
+  }
+  .nlinks.open{display:flex}
+  .ncv{margin-left:0;margin-top:6px}
+  .hbg{display:flex}
+}
 
-        .accent-link:hover::after {
-            width: 100%;
-        }
-    </style>
+/* ═══════════════════════════════════════
+   PAGE LAYOUT
+═══════════════════════════════════════ */
+#pg{position:relative;z-index:10;max-width:1100px;margin:0 auto;padding:0 44px}
+@media(max-width:768px){#pg{padding:0 20px}}
+section{padding:104px 0}
+.hr{border:none;border-top:1px solid rgba(15,23,42,0.06);max-width:1100px;margin:0 auto}
+
+/* ═══════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════ */
+.slbl{
+  font-family:var(--fm);font-size:10.5px;color:var(--purple);
+  letter-spacing:.18em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;margin-bottom:13px;
+}
+.slbl::before{
+  content:'';display:block;width:26px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--purple));
+}
+h2.st{
+  font-family:var(--fd);font-size:clamp(30px,4vw,46px);font-weight:700;
+  color:var(--t1);letter-spacing:-.03em;line-height:1.08;margin-bottom:12px;
+}
+.ssub{font-size:15px;color:var(--t2);max-width:480px;line-height:1.8}
+
+/* ═══════════════════════════════════════
+   CARDS — original white style
+═══════════════════════════════════════ */
+.card{
+  background:var(--card);border:1px solid var(--cb);
+  border-radius:12px;
+  transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.card:hover{
+  transform:translateY(-5px);border-color:var(--purple);
+  box-shadow:0 20px 40px rgba(0,0,0,.06),0 0 0 1px rgba(124,58,237,.08);
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+#hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;padding-top:64px;
+}
+.hi{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:60px;width:100%;padding:60px 0;flex-wrap:wrap;
+}
+.ht{flex:1;min-width:280px}
+.hg{
+  font-family:var(--fm);font-size:11.5px;color:var(--purple);
+  letter-spacing:.2em;text-transform:uppercase;
+  display:flex;align-items:center;gap:12px;margin-bottom:20px;opacity:0;
+}
+.hg::before{
+  content:'';display:block;width:32px;height:1px;background:var(--purple);
+}
+h1.hn{
+  font-family:var(--fd);font-size:clamp(48px,7.5vw,88px);
+  font-weight:700;letter-spacing:-.04em;line-height:.92;
+  color:var(--t1);margin-bottom:16px;opacity:0;
+}
+h1.hn .nl-grd{
+  display:block;
+  background:linear-gradient(135deg,var(--purple) 0%,#a78bfa 60%,#6d28d9 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hrole{font-size:16px;color:var(--t2);line-height:1.65;max-width:460px;margin-bottom:10px;opacity:0}
+.hrole strong{color:var(--t1);font-weight:600}
+
+/* Typewriter */
+.htw-wrap{
+  display:flex;align-items:center;gap:9px;
+  margin-bottom:30px;opacity:0;min-height:26px;
+}
+.htw-pre{font-family:var(--fm);font-size:12px;color:var(--t3);letter-spacing:.05em}
+#htw{font-family:var(--fm);font-size:12px;color:var(--purple)}
+.htw-cur{
+  display:inline-block;width:2px;height:13px;background:var(--purple);
+  margin-left:2px;animation:blink .8s step-end infinite;vertical-align:middle;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* Hero tags */
+.htags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:36px;opacity:0}
+.htag{
+  font-family:var(--fm);font-size:10px;color:var(--t3);
+  padding:4px 11px;border-radius:100px;border:1px solid var(--cb);
+  transition:all .2s;letter-spacing:.06em;text-transform:uppercase;
+}
+.htag:hover{color:var(--purple);border-color:var(--pur-b);background:var(--pur-lt)}
+
+/* Hero buttons */
+.hbtns{display:flex;flex-wrap:wrap;align-items:center;gap:14px;opacity:0}
+.bp{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 26px;border-radius:8px;
+  font-family:var(--fm);font-size:12px;letter-spacing:.04em;
+  text-decoration:none;background:var(--purple);color:#fff;
+  transition:background .2s,transform .2s,box-shadow .2s;
+  box-shadow:0 4px 14px rgba(124,58,237,.3);
+}
+.bp:hover{background:var(--pur-d);transform:translateY(-1px);box-shadow:0 8px 24px rgba(124,58,237,.35)}
+.bgb{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:8px;
+  font-family:var(--fm);font-size:12px;letter-spacing:.04em;
+  text-decoration:none;border:1px solid var(--pur-b);color:var(--purple);
+  transition:all .2s;
+}
+.bgb:hover{background:var(--pur-lt);box-shadow:0 4px 14px rgba(124,58,237,.12)}
+
+/* ═══════════════════════════════════════
+   PROFILE PHOTO — circular orbital frame
+═══════════════════════════════════════ */
+/* Container for the photo and effects */
+.hphoto { 
+  flex-shrink: 0; 
+  position: relative; 
+  opacity: 0; 
+}
+
+/* Unified Wrapper (This fixed the mobile offset issue) */
+.photo-wrapper { 
+  position: relative; 
+  width: 220px; 
+  height: 220px; 
+  margin: 0 auto; 
+}
+
+/* The actual image container */
+.photo-circle {
+  width: 100%; 
+  height: 100%; 
+  border-radius: 50%;
+  overflow: hidden; 
+  border: 4px solid rgba(255, 255, 255, 0.08);
+  position: relative; 
+  z-index: 2; 
+  background: #111;
+}
+
+.photo-circle img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+/* Outer orbital ring */
+.orbit-ring {
+  position: absolute; 
+  inset: -20px; 
+  border-radius: 50%;
+  border: 2px dashed rgba(124, 58, 237, 0.4);
+  animation: orbit-rev 20s linear infinite; 
+  pointer-events: none;
+}
+
+/* Floating dot on the ring */
+.orbit-dot {
+  position: absolute; 
+  width: 10px; 
+  height: 10px;
+  background: #7c3aed; 
+  border-radius: 50%;
+  top: -5px; 
+  left: calc(50% - 5px);
+  box-shadow: 0 0 15px #7c3aed;
+}
+
+/* Conic gradient spinning border */
+.photo-spin-wrap {
+  position: absolute; 
+  inset: -5px; 
+  border-radius: 50%;
+  padding: 2px; 
+  background: conic-gradient(from 0deg, transparent, #7c3aed, transparent);
+  animation: spin 4s linear infinite; 
+  z-index: 1;
+}
+
+/* Mask to keep the spin effect only on the border */
+.photo-mask { 
+  position: absolute; 
+  inset: 4px; 
+  background: #060608; 
+  border-radius: 50%; 
+}
+
+/* Animation Keyframes */
+@keyframes spin { 
+  to { transform: rotate(360deg); } 
+}
+
+@keyframes orbit-rev { 
+  to { transform: rotate(-360deg); } 
+}
+/* Social bar */
+.hsoc{
+  position:absolute;right:-24px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:16px;opacity:0;
+}
+.hsoc::before,.hsoc::after{
+  content:'';display:block;width:1px;height:50px;
+  background:linear-gradient(transparent,var(--t3));
+}
+.hsoc::after{background:linear-gradient(var(--t3),transparent)}
+.sl{color:var(--t3);text-decoration:none;display:flex;transition:color .2s,transform .2s}
+.sl:hover{color:var(--purple);transform:translateX(-2px)}
+
+@media (max-width: 900px) {
+  .hi { flex-direction: column-reverse; text-align: center; gap: 48px; }
+  .ht h1 { margin: 0 auto 16px; }
+  .h-desc { margin: 0 auto 32px; }
+  .hbtns { justify-content: center; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .n-links { display: none; }
+  
+  /* Fixed Mobile Photo Sizing */
+  .photo-wrapper { width: 200px; height: 200px; }
+  .orbit-ring { inset: -15px; }
+}
+
+@media (max-width: 600px) {
+  .photo-wrapper { width: 160px; height: 160px; }
+  .orbit-ring { inset: -12px; }
+  .section-head h2 { font-size: 1.75rem; }
+}
+
+
+
+/* ═══════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════ */
+.agrid{display:grid;grid-template-columns:180px 1fr;gap:64px;align-items:start}
+@media(max-width:768px){.agrid{grid-template-columns:1fr;gap:32px}}
+.abody{display:flex;flex-direction:column;gap:16px;font-size:15px;color:var(--t2);line-height:1.9}
+.abody strong{color:var(--t1);font-weight:600}
+.abody a{color:var(--purple);text-decoration:none;border-bottom:1px solid var(--pur-b);transition:border-color .2s}
+.abody a:hover{border-color:var(--purple)}
+
+/* ═══════════════════════════════════════
+   RESEARCH FEATURED CARD
+═══════════════════════════════════════ */
+.rfeat{padding:40px 44px}
+@media(max-width:600px){.rfeat{padding:24px 20px}}
+.rfh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:28px}
+.rfid{font-family:var(--fm);font-size:9.5px;color:var(--t3);letter-spacing:.12em;margin-bottom:6px}
+.rft{
+  font-family:var(--fd);font-size:clamp(18px,2.5vw,26px);font-weight:700;
+  color:var(--t1);line-height:1.25;letter-spacing:-.02em;max-width:600px;margin-bottom:8px;
+}
+.rfloc{font-family:var(--fm);font-size:9.5px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px}
+.bon{
+  font-family:var(--fm);font-size:9px;color:var(--purple);
+  background:var(--pur-lt);border:1px solid var(--pur-b);
+  padding:4px 12px;border-radius:100px;letter-spacing:.12em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.bon::before{
+  content:'';width:5px;height:5px;border-radius:50%;background:var(--purple);
+  box-shadow:0 0 6px rgba(124,58,237,0.5);animation:blink 2s ease-in-out infinite;
+}
+.boff{
+  font-family:var(--fm);font-size:9px;color:var(--t3);
+  background:rgba(148,163,184,0.08);border:1px solid var(--cb);
+  padding:4px 12px;border-radius:100px;letter-spacing:.12em;text-transform:uppercase;
+}
+.rfsumm{font-size:14px;color:var(--t2);line-height:1.85;max-width:700px;margin-bottom:32px}
+.rfdrow{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--cb);padding-top:26px;margin-bottom:26px;
+}
+@media(max-width:660px){.rfdrow{grid-template-columns:1fr}}
+.rfdc{padding-right:26px;border-right:1px solid var(--cb)}
+.rfdc:nth-child(2){padding:0 26px}
+.rfdc:last-child{border-right:none;padding-right:0;padding-left:26px}
+@media(max-width:660px){
+  .rfdc{border-right:none!important;padding:0!important;
+    border-bottom:1px solid var(--cb);padding-bottom:16px!important;margin-bottom:16px!important}
+  .rfdc:last-child{border-bottom:none!important;padding-bottom:0!important;margin-bottom:0!important}
+}
+.rfdl{font-family:var(--fm);font-size:8.5px;color:var(--purple);letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
+.rfdt{font-size:13px;color:var(--t2);line-height:1.8}
+.rffoot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{
+  font-family:var(--fm);font-size:10px;color:var(--t2);
+  padding:3px 9px;border-radius:5px;background:#f8fafc;
+  border:1px solid var(--cb);transition:all .2s;
+}
+.chip:hover{color:var(--purple);border-color:var(--pur-b);background:var(--pur-lt)}
+.ghl{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--fm);font-size:11px;color:var(--t2);
+  text-decoration:none;padding:8px 15px;border-radius:7px;
+  border:1px solid var(--cb);transition:all .2s;white-space:nowrap;
+}
+.ghl:hover{color:var(--purple);border-color:var(--pur-b);background:var(--pur-lt)}
+
+/* ═══════════════════════════════════════
+   PROJECT CARDS
+═══════════════════════════════════════ */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:16px}
+.pcard{padding:24px;display:flex;flex-direction:column;cursor:pointer}
+.pct{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}
+.ficon{color:var(--purple);opacity:.55;transition:opacity .2s}
+.card:hover .ficon{opacity:.9}
+.pac{display:flex;align-items:center;gap:8px}
+.pah{color:var(--t3);transition:color .2s;display:flex;text-decoration:none}
+.pah:hover{color:var(--purple)}
+.ptitle{
+  font-family:var(--fd);font-size:15px;font-weight:600;color:var(--t1);
+  margin-bottom:10px;line-height:1.35;transition:color .2s;letter-spacing:-.01em;
+}
+.card:hover .ptitle{color:var(--purple)}
+.pdesc{font-size:13px;color:var(--t2);line-height:1.8;flex-grow:1;margin-bottom:18px}
+.pfoot{display:flex;flex-wrap:wrap;gap:5px;padding-top:14px;border-top:1px solid var(--cb)}
+
+/* ═══════════════════════════════════════
+   SKILLS + EDUCATION
+═══════════════════════════════════════ */
+.segrid{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+@media(max-width:768px){.segrid{grid-template-columns:1fr;gap:56px}}
+.skg{margin-bottom:24px}
+.skgl{
+  font-family:var(--fm);font-size:9px;color:var(--t3);letter-spacing:.16em;text-transform:uppercase;
+  margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--cb);
+}
+.skps{display:flex;flex-wrap:wrap;gap:7px}
+.skp{
+  font-size:13px;color:var(--t1);padding:5px 12px;border-radius:7px;
+  background:#fff;border:1px solid var(--cb);transition:all .2s;
+}
+.skp:hover{border-color:var(--pur-b);color:var(--purple);background:var(--pur-lt)}
+.ecard{padding:24px;margin-bottom:12px}
+.eper{font-family:var(--fm);font-size:9.5px;color:var(--t3);letter-spacing:.1em;margin-bottom:7px}
+.etitle{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:3px}
+.esc{font-size:13px;color:var(--purple);margin-bottom:12px}
+.edet{font-size:13px;color:var(--t2);line-height:1.8}
+/* GPA badge */
+.egpa{
+  display:inline-block;margin-bottom:10px;
+  font-family:var(--fm);font-size:9px;color:var(--purple);
+  background:var(--pur-lt);border:1px solid var(--pur-b);
+  padding:3px 10px;border-radius:100px;letter-spacing:.1em;text-transform:uppercase;
+}
+
+/* ═══════════════════════════════════════
+   WRITING
+═══════════════════════════════════════ */
+.wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.wcard{padding:24px;display:flex;flex-direction:column;text-decoration:none}
+.wtags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.wtag{
+  font-family:var(--fm);font-size:9px;color:var(--t3);
+  padding:3px 8px;border-radius:100px;border:1px solid var(--cb);
+  letter-spacing:.1em;text-transform:uppercase;
+}
+.wtitle{
+  font-family:var(--fd);font-size:16px;font-weight:600;color:var(--t1);
+  line-height:1.4;margin-bottom:11px;flex-grow:1;letter-spacing:-.01em;transition:color .2s;
+}
+.card:hover .wtitle{color:var(--purple)}
+.wsumm{font-size:13px;color:var(--t2);line-height:1.8;margin-bottom:18px}
+.wfoot{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:14px;border-top:1px solid var(--cb);
+}
+.wmeta{
+  display:flex;gap:12px;font-family:var(--fm);font-size:9px;
+  color:var(--t3);letter-spacing:.1em;text-transform:uppercase;
+}
+
+/* ═══════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════ */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;max-width:660px}
+.cc{
+  display:flex;align-items:center;gap:14px;padding:16px 18px;
+  background:var(--card);border:1px solid var(--cb);border-radius:10px;
+  text-decoration:none;color:var(--t1);
+  transition:border-color .3s,transform .2s,box-shadow .2s;
+}
+.cc:hover{border-color:var(--purple);transform:translateX(4px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.ci{
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  background:var(--pur-lt);border-radius:8px;color:var(--purple);flex-shrink:0;
+}
+.clbl{font-family:var(--fm);font-size:9px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+.cval{font-size:13.5px;font-weight:500;color:var(--t1)}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer{
+  position:relative;z-index:10;
+  border-top:1px solid var(--cb);padding:26px 0;
+}
+.fw{
+  max-width:1100px;margin:0 auto;padding:0 44px;
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;
+}
+.ftext{font-family:var(--fm);font-size:10px;color:var(--t3)}
+
+/* ═══════════════════════════════════════
+   REVEAL CLASS
+═══════════════════════════════════════ */
+.rv{opacity:0;transform:translateY(24px)}
+</style>
 </head>
+<body>
 
-<body class="antialiased selection:bg-white selection:text-black">
+<div id="progress"></div>
+<div id="canvas-container"></div>
 
-    <div id="canvas-container"></div>
+<!-- ══ NAVBAR ══ -->
+<nav id="nav">
+  <div class="nw">
+    <a href="#hero" class="logo"><span class="ldot"></span>Prosun Datta</a>
+    <div class="nlinks" id="nmenu">
+      <a href="#about"    class="nl" data-s="about">   <span class="ni">01.</span>About</a>
+      <a href="#research" class="nl" data-s="research"><span class="ni">02.</span>Research</a>
+      <a href="#projects" class="nl" data-s="projects"><span class="ni">03.</span>Projects</a>
+      <a href="#skills"   class="nl" data-s="skills">  <span class="ni">04.</span>Expertise</a>
+      <a href="#writing"  class="nl" data-s="writing"> <span class="ni">05.</span>Writing</a>
+      <a href="#contact"  class="nl" data-s="contact"> <span class="ni">06.</span>Contact</a>
+      <a id="ncv" href="#" target="_blank" class="ncv">CV ↗</a>
+    </div>
+    <button class="hbg" id="hbg" aria-label="Menu">
+      <span class="hbg-line"></span>
+      <span class="hbg-line"></span>
+      <span class="hbg-line"></span>
+    </button>
+  </div>
+</nav>
 
-    <main id="app-content" class="relative z-10 max-w-5xl mx-auto px-6 sm:px-12 py-24 space-y-32">
-        <!-- Content injected via JS -->
-    </main>
+<!-- ══ PAGE ══ -->
+<div id="pg">
 
-    <script>
-        // =========================================================================
-        // EDIT HERE - DO NOT TOUCH BELOW
-        // =========================================================================
+<!-- ─ HERO ─ -->
+<section id="hero">
+  <div class="hi">
+    <div class="ht">
+      <div class="hg rv">Hi, I'm</div>
+      <h1 class="hn rv">Prosun Datta<br><span class="nl-grd"></span></h1>
+      <div class="hrole rv">
+        <strong>PIML Researcher | Founder & Executive Director, Dynexly</strong> —<br>
+        Youth-led research collective. Physics meets machine learning.
+      </div>
+      <div class="htw-wrap rv">
+        <span class="htw-pre">Currently →</span>
+        <span id="htw"></span><span class="htw-cur"></span>
+      </div>
+      <div class="htags rv">
+        <span class="htag">Physics-Informed ML</span>
+        <span class="htag">Deep Learning</span>
+        <span class="htag">Computational Physics</span>
+        <span class="htag">Open Source</span>
+        <span class="htag">Optics & Microgrids</span>
+      </div>
+      <div class="hbtns rv">
+        <a href="#research" class="bp">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          View Research
+        </a>
+        <a id="hcv" href="#" target="_blank" class="bgb">
+          Curriculum Vitae
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hphoto rv">
+      <div class="orbit-ring"><div class="orbit-dot"></div></div>
+      <div style="position:relative;width:200px;height:200px">
+        <div class="photo-spin-wrap"><div class="photo-mask"></div></div>
+        <div class="photo-circle"><img id="pimg" src="" alt="Prosun Datta" loading="eager"></div>
+      </div>
+      <div class="hsoc">
+        <a class="sl" id="gh-l" href="#" target="_blank" title="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </a>
+        <a class="sl" id="li-l" href="#" target="_blank" title="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a class="sl" id="md-l" href="#" target="_blank" title="Medium">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-        const PORTFOLIO_DATA = {
-            profile: {
-                name: "Prosun Kanti Datta",
-                headline: "Founder & Executive Director, Dynexly (Dynamic Neural Exploration Lab for Youth)",
-                subheadline: "Neural Exploration for Real Impact",
-                supportingLine: "I lead a youth-led research collective building physics-informed machine learning solutions for real-world challenges. Passionate about translating rigorous research into open-source tools.",
-                image: "https://i.ibb.co.com/q3vbgWNt/CEO-pf2-1.png",
-                cvLink: "https://docs.google.com/document/d/1YRqaerPIxr-ptY3WLCLMQ3GGxay8DnDNkiDWEcec2Aw/edit?usp=sharing",
-                email: "prosun07a@gmail.com",
-                github: "https://github.com/prosun07a",
-                linkedin: "https://www.linkedin.com/in/prosun07a/",
-                medium: "https://medium.com/@prosun07a"
-            },
-            projects: [
-                {
-                    title: "Solar Resilience PIML Sylhet",
-                    description: "",
-                    problem: "Frequent power outages during monsoons severely affect healthcare facilities in the Sylhet region.",
-                    approach: "Developing a physics-informed machine learning model to predict and improve the resilience of solar microgrids for critical healthcare loads.",
-                    outcome: "Building an open-source framework that aims to enhance the reliability of solar power systems under uncertain weather conditions. (Ongoing)",
-                    tech: ["Python", "NumPy", "SciPY", "PvLib", "Matplotlib", "Machine Learning", "PINN"],
-                    link: "https://github.com/prosun07a/solar-resilience-piml-sylhet",
-                    featured: true
-                },
-                {
-                    title: "Stochastic Modeling of Radioactive Decay via Monte Carlo Simulation",
-                    description: "This project serves as a 'Virtual Science Laboratory,' replicating the behavior of radioactive isotopes within a digital environment. It bridges the gap between theoretical physics and computational modeling by treating decay as a probabilistic event rather than a fixed schedule. By controlling the decay constant $\lambda$ and starting population N_{0}, the simulation allows for a deep-dive analysis into the statistical nature of nuclear physics",
-                    problem: "Understanding how deterministic physical laws (exponential decay) emerge from purely random microscopic events.",
-                    approach: "Implemented a Monte Carlo simulation to model radioactive decay as probabilistic events by varying population size and decay constant",
-                    outcome: "Successfully reproduced the theoretical half-life with 98% accuracy and clearly demonstrated the Law of Large Numbers through visual and statistical analysis.",
-                    tech: ["Python", "NumPy", "Matplotlib", "Ubuntu 24.04 LTS (Linux Terminal-based execution)"],
-                    link: "https://github.com/prosun07a/Stochastic-Physics-Sim",
-                    featured: true 
-                }
-            ],
-            research: [
-               
-            ],
-            blog: [
-                {
-                    title: "Gravity, Gradients, and the 2 AM Ghost: Why the Best AI Engineers Stop Coding and Start Seeing",
-                    tags: ["Physics", "Machine Learning", "Opinion", "Frustation", "Stress"],
-                    description: "We’ve all been there—2:00 AM, a flatlined loss curve, and the quiet realization that code alone isn't enough. This isn't just an article about Machine Learning; it’s a love letter to the late-night builders who have felt the weight of the '2 AM Ghost.' It’s about the moment I stopped fighting the math and started seeing the universe inside the machine. A journey from cold optimization to the warm, physical soul of intelligence.",
-                    date: "March 2026",
-                    readTime: "4 min read",
-                    link: "https://medium.com/@prosun07a/gravity-gradients-and-the-2-am-ghost-why-the-best-ai-engineers-stop-coding-and-start-seeing-86a96c4cbc7d"
-                },
-            ],
-            education: [
-                {
-                    degree: "Science",
-                    
-                    institution: "British Bangladesh International School & College",
-                    period: "2023 — 2027",
-                    details: "I completed my Secondary School Certificate (SSC) with a GPA of 5.00 out of 5.00 in 2025. I am currently an HSC candidate (Batch 2027), focusing on Physics, Higher Mathematics, and Chemistry, with a strong interest in applying mathematical and physical principles to computational methods and machine learning research."
-                }
-            ],
-            expertise: [
-                { category: "Computing & Programming", skills: ["Python (NumPy, SciPy, Pandas)", "Git & GitHub", "Linux(Ubuntu/Debian) & Windows", "Excel & Sheets", "Matplotlib, LaTex & Seaborn", "VsCode & VIM"] },
-                { category: "Machine Learning & Mathematics", skills: ["Linear Algebra, Calculus & Statistics", "Linear Regression & Neural Networks", "Pandas, NumPy & PyTorch"] },
-                { category: "Physics", skills: ["Thermodynamics", "Electrostatics & Current Electricity", "Phase Transition", "Optics", "Vector"] }
-            ],
-            floatingWords: [
-                "ML", "Computational Physics", "Neural Networks",
-                "Python", "PINN", "Optimization", "Scientific Computing", "Research",
-                "Scientific Development", "PINNs", "Σ", "∫", "∇", "∂", "ψ", "ℏ", "Δ", "λ"
-            ]
-        };
 
-        // =========================================================================
-        // DO NOT TOUCH BELOW THIS LINE
-        // =========================================================================
 
-        const appContent = document.getElementById('app-content');
+<!-- ─ ABOUT ─ -->
+<section id="about">
+  <div class="agrid rv">
+    <div><div class="slbl">00. About</div><h2 class="st">Who I Am</h2></div>
+    <div class="abody">
+      <p>My name is <strong>Prosun Kanti Datta</strong> — I go by <strong>Prosun Datta</strong>. I'm a Class XI student and independent researcher from <strong>Sylhet, Bangladesh</strong>, working at the intersection of computational physics and machine learning.</p>
+      <p>In March 2026, I founded <a href="https://github.com/dynexlylab" target="_blank">Dynexly</a> (Dynamic Neural Exploration Lab for Youth) — a <strong>youth-led, open-source research collective</strong> for ages 14–22. Our principle is simple: every paper targets arXiv, every tool ships MIT licensed, research always ends in a real deployable product. We operate on $0 budget and an uncompromising standard of rigor.</p>
+      <p>My flagship project tackles a documented real-world crisis: <strong>solar microgrids failing in healthcare facilities during Bangladesh's monsoon season</strong> — a direct patient safety problem. I'm building physics-informed ML models that embed PV system physics directly into the learning objective, not as an afterthought.</p>
+      <p>I am preparing for <strong>HSC 2027</strong> and targeting Computer Science at a top R1 research university. I'm actively seeking <strong>research collaborations and faculty mentorship</strong> in applied ML, energy systems, and computational physics.</p>
+    </div>
+  </div>
+</section>
 
-        function render() {
-            const { profile, projects, research, blog } = PORTFOLIO_DATA;
+<div class="hr"></div>
 
-            appContent.innerHTML = `
-                <!-- Hero Section -->
-                <section id="hero" class="min-h-[70vh] flex flex-col justify-center items-start pt-10">
-                    <div class="flex flex-col-reverse md:flex-row items-start md:items-center gap-12 w-full">
-                        <div class="flex-1 space-y-6">
-                            <h1 class="section-heading text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-tight text-slate-900">
-                                ${profile.name}
-                            </h1>
-                            <h2 class="text-xl sm:text-2xl text-slate-800 font-medium max-w-2xl">
-                                ${profile.headline}
-                            </h2>
-                            <p class="text-base sm:text-lg text-slate-500 max-w-xl leading-relaxed">
-                                ${profile.subheadline}
-                                 <p class="text-base sm:text-1g text-slate-500 max-w-x1 leading-relaxed">
-                                ${profile.supportingLine}
-                            </p>
-                            <div class="pt-6 flex flex-wrap gap-4">
-                                <a href="#projects" class="inline-block px-8 py-3 bg-accent hover:bg-accent-dark text-white transition-all duration-300 text-sm tracking-wider uppercase font-bold rounded-lg shadow-lg shadow-accent/20">
-                                    View Research Projects
-                                </a>
-                                <a href="${profile.cvLink}" target="_blank" class="accent-link inline-block py-3 text-sm tracking-wider uppercase font-bold">
-                                    Curriculum Vitae
-                                </a>
-                            </div>
-                        </div>
-                        <div class="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 shrink-0 rounded-full overflow-hidden border border-slate-900/10 shadow-sm">
-                            <img src="${profile.image}" alt="${profile.name}" class="w-full h-full object-cover" />
-                        </div>
-                    </div>
-                </section>
+<!-- ─ RESEARCH ─ -->
+<section id="research">
+  <div class="rv" style="margin-bottom:48px"><div class="slbl">01. Research</div><h2 class="st">Flagship Research</h2><p class="ssub">Physics-Informed Machine Learning applied to real infrastructure problems.</p></div>
+  <div class="card rv" id="rcard"></div>
+</section>
 
-                <!-- Projects Section -->
-                <section id="projects" class="space-y-16">
-                    <div class="space-y-4">
-                        <span class="text-accent text-xs font-bold tracking-[0.2em] uppercase">Case Studies</span>
-                        <h3 class="section-heading text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Selected Projects</h3>
-                        <p class="text-slate-600 max-w-2xl text-lg">A deep dive into my work across machine learning and computational physics.</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        ${projects.map(p => `
-                            <div class="card-hover group flex flex-col p-8 rounded-2xl relative overflow-hidden">
-                                <div class="flex justify-between items-start mb-8">
-                                    <div class="flex gap-2">
-                                        ${p.featured ? `
-                                            <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-accent/10 text-accent text-[10px] font-bold uppercase tracking-wider">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                                                Featured Research
-                                            </span>
-                                        ` : ''}
-                                    </div>
-                                    <a href="${p.link}" target="_blank" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 text-slate-600 hover:text-accent hover:bg-accent/5 transition-all text-xs font-bold">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                                        Code
-                                    </a>
-                                </div>
-                                
-                                <h4 class="text-2xl font-bold text-slate-900 mb-4 leading-tight">${p.title}</h4>
-                                <p class="text-slate-600 text-sm leading-relaxed mb-8">${p.description}</p>
-                                
-                                <div class="grid grid-cols-1 gap-6 pt-6 border-t border-slate-100 mb-8">
-                                    <div>
-                                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Problem</span>
-                                        <p class="text-sm text-slate-600 mt-1">${p.problem}</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Approach</span>
-                                        <p class="text-sm text-slate-600 mt-1">${p.approach}</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Outcome</span>
-                                        <p class="text-sm text-slate-600 mt-1 font-medium text-slate-900">${p.outcome}</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex flex-wrap gap-2 mt-auto">
-                                    ${p.tech.map(t => `<span class="text-[11px] font-bold px-2.5 py-1 bg-slate-50 text-slate-600 rounded-md border border-slate-100">${t}</span>`).join('')}
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </section>
+<div class="hr"></div>
 
-                <!-- Research Section -->
-                <section id="research" class="space-y-16">
-                    <div class="space-y-4">
-                        <span class="text-accent text-xs font-bold tracking-[0.2em] uppercase">Academic & Independent</span>
-                        <h3 class="section-heading text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Research</h3>
-                        <p class="text-slate-600 max-w-2xl text-lg">Investigations at the intersection of physics, computation, and machine learning.</p>
-                    </div>
-                    
-                    <div class="space-y-8">
-                        ${research.map(r => `
-                            <div class="card-hover p-8 rounded-2xl">
-                                <div class="flex gap-6">
-                                    <div class="hidden sm:flex shrink-0 w-12 h-12 items-center justify-center rounded-xl bg-accent/5 text-accent">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.5"/><path d="M14 2v7.5"/><path d="M8.5 2h7"/><path d="M14 11.5c.6 0 1 .4 1 1v2.5c0 .6-.4 1-1 1h-4c-.6 0-1-.4-1-1v-2.5c0-.6.4-1 1-1h4z"/><path d="M9 16v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2"/><path d="M10 9.5h4"/></svg>
-                                    </div>
-                                    <div class="flex-grow space-y-4">
-                                        <div class="flex flex-wrap items-center gap-3">
-                                            <h4 class="text-xl font-bold text-slate-900">${r.title}</h4>
-                                            <span class="px-2.5 py-0.5 rounded-full bg-accent/10 text-accent text-[10px] font-bold uppercase tracking-wider">
-                                                ${r.status}
-                                            </span>
-                                        </div>
-                                        <div class="text-xs font-bold text-slate-400 uppercase tracking-[0.15em]">${r.category}</div>
-                                        <p class="text-slate-600 text-sm leading-relaxed max-w-3xl">${r.description}</p>
-                                        
-                                        <div class="mt-6 flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100">
-                                            <div class="shrink-0 text-accent mt-0.5">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                                            </div>
-                                            <p class="text-xs text-slate-600 leading-relaxed">
-                                                <span class="text-slate-900 font-bold mr-1">Contribution:</span> ${r.contribution}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </section>
+<!-- ─ PROJECTS ─ -->
+<section id="projects">
+  <div class="rv" style="margin-bottom:48px"><div class="slbl">02. Projects</div><h2 class="st">Technical Work</h2><p class="ssub">Computational projects in ML and physics simulation.</p></div>
+  <div class="pgrid rv" id="pcon"></div>
+</section>
 
-                <!-- Blog Section -->
-                <section id="blog" class="space-y-16">
-                    <div class="space-y-4">
-                        <span class="text-accent text-xs font-bold tracking-[0.2em] uppercase">Thoughts & Tutorials</span>
-                        <h3 class="section-heading text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Articles & Writing</h3>
-                        <p class="text-slate-600 max-w-2xl text-lg">Notes on machine learning, physics, and the craft of scientific computing.</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        ${blog.map(b => `
-                            <a href="${b.link}" target="_blank" class="card-hover group flex flex-col p-8 rounded-2xl relative">
-                                <div class="flex flex-wrap gap-2 mb-6">
-                                    ${b.tags.map(t => `<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-slate-50 text-slate-500 border border-slate-100">${t}</span>`).join('')}
-                                </div>
-                                
-                                <h4 class="text-xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-accent transition-colors">${b.title}</h4>
-                                <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">${b.description}</p>
-                                
-                                <div class="flex items-center justify-between pt-6 border-t border-slate-100">
-                                    <div class="flex items-center gap-4 text-[10px] font-mono text-slate-400 uppercase tracking-widest">
-                                        <span class="flex items-center gap-1.5">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                            ${b.date}
-                                        </span>
-                                        <span class="flex items-center gap-1.5">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                            ${b.readTime}
-                                        </span>
-                                    </div>
-                                    <div class="text-accent group-hover:translate-x-1 transition-all duration-300">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                    </div>
-                                </div>
-                            </a>
-                        `).join('')}
-                    </div>
-                </section>
+<div class="hr"></div>
 
-                <!-- Expertise & Education Section -->
-                <section id="expertise" class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    <div class="space-y-12">
-                        <div class="space-y-4">
-                            <span class="text-accent text-xs font-bold tracking-[0.2em] uppercase">Technical Foundation</span>
-                            <h3 class="section-heading text-4xl font-bold tracking-tight text-slate-900">Expertise</h3>
-                        </div>
-                        <div class="space-y-8">
-                            ${PORTFOLIO_DATA.expertise.map(e => `
-                                <div class="space-y-3">
-                                    <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest">${e.category}</h4>
-                                    <div class="flex flex-wrap gap-2">
-                                        ${e.skills.map(s => `<span class="px-3 py-1.5 rounded-lg bg-white border border-slate-100 text-slate-700 text-sm font-medium shadow-sm">${s}</span>`).join('')}
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
+<!-- ─ EXPERTISE + EDUCATION ─ -->
+<section id="skills">
+  <div class="segrid">
+    <div class="rv"><div class="slbl">03a. Skills</div><h2 class="st" style="margin-bottom:40px">Expertise</h2><div id="scon"></div></div>
+    <div class="rv"><div class="slbl">03b. Education</div><h2 class="st" style="margin-bottom:40px">Academic</h2><div id="econ"></div></div>
+  </div>
+</section>
 
-                    <div class="space-y-12">
-                        <div class="space-y-4">
-                            <span class="text-accent text-xs font-bold tracking-[0.2em] uppercase">Academic Path</span>
-                            <h3 class="section-heading text-4xl font-bold tracking-tight text-slate-900">Education</h3>
-                        </div>
-                        <div class="space-y-8">
-                            ${PORTFOLIO_DATA.education.map(edu => `
-                                <div class="card-hover p-8 rounded-2xl space-y-4">
-                                    <div class="flex justify-between items-start">
-                                        <div>
-                                            <h4 class="text-xl font-bold text-slate-900">${edu.degree}</h4>
-                                            <p class="text-accent font-medium">${edu.institution}</p>
-                                        </div>
-                                        <span class="text-xs font-mono text-slate-400">${edu.period}</span>
-                                    </div>
-                                    <p class="text-slate-600 text-sm leading-relaxed">${edu.details}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </section>
+<div class="hr"></div>
 
-                <!-- Contact Section -->
-                <section id="contact" class="space-y-16 pt-16 border-t border-slate-200">
-                    <div class="space-y-4">
-                        <span class="text-accent text-xs font-bold tracking-[0.2em] uppercase">Let's Connect</span>
-                        <h3 class="section-heading text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Contact & Collaboration</h3>
-                        <p class="text-slate-600 max-w-2xl text-lg">Interested for research collaboration, technical discussions, and opportunities in machine learning and computational physics.</p>
-                    </div>
+<!-- ─ WRITING ─ -->
+<section id="writing">
+  <div class="rv" style="margin-bottom:48px"><div class="slbl">04. Writing</div><h2 class="st">Articles</h2><p class="ssub">Notes on machine learning, physics, and scientific thinking.</p></div>
+  <div class="wgrid rv" id="wcon"></div>
+</section>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl">
-                        <!-- Email Card -->
-                        <a href="mailto:${profile.email}" class="card-hover group flex items-center p-6 rounded-2xl">
-                            <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-accent/5 text-accent group-hover:bg-accent group-hover:text-white transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            </div>
-                            <div class="ml-6 flex-grow">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-1">Direct Email</div>
-                                <div class="text-slate-900 font-bold">Email</div>
-                            </div>
-                            <div class="text-slate-300 group-hover:text-accent transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                            </div>
-                        </a>
+<div class="hr"></div>
 
-                        <!-- GitHub Card -->
-                        <a href="${profile.github}" target="_blank" class="card-hover group flex items-center p-6 rounded-2xl">
-                            <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-accent/5 text-accent group-hover:bg-accent group-hover:text-white transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                            </div>
-                            <div class="ml-6 flex-grow">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-1">Projects & Code</div>
-                                <div class="text-slate-900 font-bold">GitHub</div>
-                            </div>
-                            <div class="text-slate-300 group-hover:text-accent transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                            </div>
-                        </a>
+<!-- ─ CONTACT ─ -->
+<section id="contact">
+  <div class="rv" style="margin-bottom:40px"><div class="slbl">05. Contact</div><h2 class="st">Get In Touch</h2><p class="ssub">Open to research collaborations, mentorship, and joint work in PIML and computational physics.</p></div>
+  <div class="cgrid rv" id="ccon"></div>
+</section>
 
-                        <!-- LinkedIn Card -->
-                        <a href="${profile.linkedin}" target="_blank" class="card-hover group flex items-center p-6 rounded-2xl">
-                            <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-accent/5 text-accent group-hover:bg-accent group-hover:text-white transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                            </div>
-                            <div class="ml-6 flex-grow">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-1">Professional Profile</div>
-                                <div class="text-slate-900 font-bold">LinkedIn</div>
-                            </div>
-                            <div class="text-slate-300 group-hover:text-accent transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                            </div>
-                        </a>
+</div><!-- /#pg -->
 
-                        <!-- Medium Card -->
-                        <a href="${profile.medium}" target="_blank" class="card-hover group flex items-center p-6 rounded-2xl">
-                            <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-accent/5 text-accent group-hover:bg-accent group-hover:text-white transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.37 7.037c0-2.277 4.47-4.123 9.986-4.123s9.986 1.846 9.986 4.123-4.47 4.123-9.986 4.123-9.986-1.846-9.986-4.123zm4.44 0c0 1.518 2.483 2.748 5.546 2.748s5.546-1.23 5.546-2.748-2.483-2.748-5.546-2.748-5.546 1.23-5.546 2.748zm8.934 0c0 .979-.794 1.773-1.773 1.773s-1.773-.794-1.773-1.773.794-1.773 1.773-1.773 1.773.794 1.773 1.773zM.285 7.037c0 1.977 1.96 3.58 4.378 3.58 2.417 0 4.378-1.603 4.378-3.58S7.08 3.457 4.663 3.457c-2.417 0-4.378 1.603-4.378 3.58zm1.622 0c0 1.246 1.234 2.256 2.756 2.256 1.522 0 2.756-1.01 2.756-2.256S6.185 4.78 4.663 4.78c-1.522 0-2.756 1.01-2.756 2.256z"/></svg>
-                            </div>
-                            <div class="ml-6 flex-grow">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-1">Articles & Writing</div>
-                                <div class="text-slate-900 font-bold">Medium</div>
-                            </div>
-                            <div class="text-slate-300 group-hover:text-accent transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-                            </div>
-                        </a>
-                    </div>
+<footer>
+  <div class="fw">
+    <span class="ftext">Prosun Kanti Datta &mdash; Sylhet, Bangladesh</span>
+    <span class="ftext">prosunkdatta@gmail.com</span>
+  </div>
+</footer>
 
-                    <footer class="pt-16 pb-8 border-t border-slate-100 text-center">
-                        <p class="text-slate-400 text-[10px] font-bold tracking-[0.2em] uppercase">
-                            
-                        </p>
-                    </footer>
-                    © 2026 Prosun Kanti Datta. All Rights Reserved.
-                    Founder & Executive Director, Dynexly (Dynamic Neural Exploration Lab for Youth)
-                </section>
-            `;
-        }
+<script>
+/* ═══════════════════════════════════════
+   DATA — update this block only
+═══════════════════════════════════════ */
+const D = {
+  profile:{
+    name:     "Prosun Datta",
+    fullName: "Prosun Kanti Datta",
+    image:    "https://i.ibb.co.com/q3vbgWNt/CEO-pf2-1.png",
+    email:    "prosunkdatta@gmail.com",
+    github:   "https://github.com/prosunkdatta",
+    linkedin: "https://www.linkedin.com/in/prosunkdatta/",
+    twitter:  "https://x.com/prosunkdatta",
+    orcid:    "https://orcid.org/0009-0004-2557-9095",
+    medium:   "https://medium.com/@prosun07a",
+    cv:       "https://docs.google.com/document/d/1YRqaerPIxr-ptY3WLCLMQ3GGxay8DnDNkiDWEcec2Aw/edit?usp=sharing"
+  },
+  research:{
+    id:"DX-01", cat:"Independent Research · Dynexly", status:"Ongoing",
+    title:"Physics-Informed Machine Learning for Solar Microgrid Resilience in Healthcare Facilities",
+    loc:"Sylhet Corridor, Bangladesh",
+    summary:"Healthcare facilities across the Sylhet corridor experience critical power disruptions during monsoon season — a direct threat to surgical operations, ICU equipment, and vaccine cold chains. This project develops multi-task physics-informed machine learning models that jointly predict solar generation and detect early faults by embedding photovoltaic physics directly into the learning objective.",
+    problem:"Grid-tied and off-grid healthcare facilities in South Asia lack predictive models that account for both the physical dynamics of PV systems and the high stochastic variability of monsoon cloud cover and irradiance.",
+    approach:"PV energy balance ODEs (via PVLib) are embedded as soft penalty terms in a neural architecture trained on NASA POWER meteorological data. A multi-task framework enables simultaneous generation forecasting and early fault detection.",
+    output:"arXiv preprint + open-source predictive tool (MIT licensed) for healthcare facility energy operators.",
+    tech:["Python","PyTorch","PVLib","NASA POWER API","NumPy","Pandas","Matplotlib","PIML"],
+    link:"https://github.com/prosunkdatta/piml-surgical-microgrid-sylhet"
+  },
+  projects:[
+    {title:"piml-surgical-microgrid-sylhet",desc:"Physics-Informed ML framework for predicting and optimizing solar microgrid performance in healthcare facilities. Embeds solar irradiance physics as hard constraints in the learning objective to improve reliability during monsoon conditions.",tech:["Python","PyTorch","PVLib","NumPy","Matplotlib"],link:"https://github.com/prosunkdatta/piml-surgical-microgrid-sylhet",live:true},
+    {title:"PhysData-Pipeline",desc:"Automated end-to-end pipeline for experimental physics data analysis — from raw CSV/Excel ingestion through normalization to publication-standard, LaTeX-formatted scientific figures.",tech:["Python","Pandas","NumPy","Matplotlib","LaTeX"],link:"https://github.com/prosunkdatta/physdata-pipeline",live:false},
+    {title:"Stochastic-Physics-Sim",desc:"Monte Carlo simulation of radioactive decay. Reproduced theoretical half-life with 98%+ accuracy, demonstrating how deterministic macroscopic laws emerge from independent microscopic probabilistic events.",tech:["Python","NumPy","SciPy","Matplotlib","Linux/Bash"],link:"https://github.com/prosunkdatta/Stochastic-Physics-Sim",live:false}
+  ],
+  skills:[
+    {area:"Computing",      items:["Python (NumPy, SciPy, Pandas)","Git & GitHub","Linux / Bash","Excel","VS Code"]},
+    {area:"Machine Learning",items:["Physics-Informed Neural Networks","Multi-task Learning","Deep Learning","Statistics","Linear Algebra"]},
+    {area:"Physics",        items:["Newtonian Mechanics","Thermodynamics","Electrostatics","Calculus","Computational Modelling"]}
+  ],
+  education:[
+    {
+      degree:"Higher Secondary Certificate (HSC) — Science",
+      school:"British Bangladesh International School & College",
+      period:"2025 — 2027",
+      gpa:null,
+      detail:"Concentrated in Higher Mathematics and Physics. Conducting independent research in Physics-Informed Neural Networks alongside formal study. Preparing for top R1 university applications in 2027.",
+      status:"ongoing"
+    },
+    {
+      degree:"Secondary School Certificate (SSC) — Science",
+      school:"British Bangladesh International School & College",
+      period:"2023 — 2025",
+      gpa:"5.00 / 5.00",
+      detail:"Completed with a perfect GPA of 5.00 in the Science stream. Strong foundation in Physics, Higher Mathematics, and Chemistry.",
+      status:"complete"
+    }
+  ],
+  writing:[{
+    title:"Gravity, Gradients, and the 2 AM Ghost: Why the Best AI Engineers Stop Coding and Start Seeing",
+    tags:["Physics","Machine Learning","Essay"],
+    summary:"On the moment I stopped treating the loss curve as an optimization problem and started seeing the physics inside it — what physical intuition gives you that pure backpropagation cannot.",
+    date:"March 2026",time:"4 min read",
+    link:"https://medium.com/@prosun07a/gravity-gradients-and-the-2-am-ghost-why-the-best-ai-engineers-stop-coding-and-start-seeing-86a96c4cbc7d"
+  }],
+  tw:["PIML Researcher","Founder of Dynexly","Building Physics with ML","Deep Learning Engineer","Open Source Builder"],
+  floatingWords:[
+    "Machine Learning","Computational Physics","Neural Networks","Python","PINN","Optimization",
+    "Linear Algebra","Calculus","Scientific Computing","PINNs","Deep Learning","Gradient Descent",
+    "Σ","∫","∇","∂","ψ","ℏ","Δ","λ","∞","∀","θ","π"
+  ]
+};
 
-        function initFloatingWords() {
-            const container = document.getElementById('canvas-container');
-            const words = PORTFOLIO_DATA.floatingWords;
-            const numWords = 35; // Slightly more words
+/* ═══════════════════════════════════════
+   FAVICON — dynamic from profile image
+═══════════════════════════════════════ */
+(function(){
+  const link=document.getElementById('favicon');
+  if(link) link.href=D.profile.image;
+})();
 
-            for (let i = 0; i < numWords; i++) {
-                const wordEl = document.createElement('div');
-                wordEl.className = 'floating-word';
-                wordEl.innerText = words[Math.floor(Math.random() * words.length)];
+/* ═══════════════════════════════════════
+   INJECT STATIC ELEMENTS
+═══════════════════════════════════════ */
+function boot(){
+  const p=D.profile;
+  document.getElementById('pimg').src=p.image;
+  ['ncv','hcv'].forEach(id=>{const el=document.getElementById(id);if(el)el.href=p.cv;});
+  document.getElementById('gh-l').href=p.github;
+  document.getElementById('li-l').href=p.linkedin;
+  document.getElementById('md-l').href=p.medium;
+}
 
-                // Randomize initial state
-                const startX = Math.random() * window.innerWidth;
-                const startY = Math.random() * window.innerHeight;
-                const fontSize = 10 + Math.random() * 30; // 10px to 40px
-                const depth = Math.random(); // 0 (far) to 1 (near)
+/* ═══════════════════════════════════════
+   RENDER RESEARCH
+═══════════════════════════════════════ */
+function renderR(){
+  const r=D.research;
+  document.getElementById('rcard').innerHTML=`<div class="rfeat">
+    <div class="rfh">
+      <div>
+        <div class="rfid">${r.id} · ${r.cat}</div>
+        <div class="rft">${r.title}</div>
+        <div class="rfloc">📍 ${r.loc}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0">
+        <span class="${r.status==='Ongoing'?'bon':'boff'}">${r.status}</span>
+        <a href="${r.link}" target="_blank" class="ghl">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+    <p class="rfsumm">${r.summary}</p>
+    <div class="rfdrow">
+      <div class="rfdc"><div class="rfdl">Problem</div><div class="rfdt">${r.problem}</div></div>
+      <div class="rfdc"><div class="rfdl">Approach</div><div class="rfdt">${r.approach}</div></div>
+      <div class="rfdc"><div class="rfdl">Target Output</div><div class="rfdt">${r.output}</div></div>
+    </div>
+    <div class="rffoot"><div class="chips">${r.tech.map(t=>`<span class="chip">${t}</span>`).join('')}</div></div>
+  </div>`;
+}
 
-                wordEl.style.left = `${startX}px`;
-                wordEl.style.top = `${startY}px`;
-                wordEl.style.fontSize = `${fontSize}px`;
-                wordEl.style.filter = `blur(${(1 - depth) * 3}px)`;
+/* ═══════════════════════════════════════
+   RENDER PROJECTS
+═══════════════════════════════════════ */
+function renderP(){
+  document.getElementById('pcon').innerHTML=D.projects.map(p=>`
+    <div class="card pcard" onclick="window.open('${p.link}','_blank')">
+      <div class="pct">
+        <svg class="ficon" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <div class="pac">
+          <span class="${p.live?'bon':'boff'}">${p.live?'Active':'Complete'}</span>
+          <a href="${p.link}" target="_blank" class="pah" onclick="event.stopPropagation()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="ptitle">${p.title}</div>
+      <div class="pdesc">${p.desc}</div>
+      <div class="pfoot">${p.tech.map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+    </div>`).join('');
+}
 
-                // Base opacity depends on depth (closer = slightly more visible)
-                const baseOpacity = 0.05 + (depth * 0.1);
-                wordEl.style.opacity = baseOpacity;
-                wordEl.dataset.baseOpacity = baseOpacity;
-                wordEl.dataset.depth = depth; // Store for animation
+/* ═══════════════════════════════════════
+   RENDER SKILLS + EDUCATION
+═══════════════════════════════════════ */
+function renderSE(){
+  document.getElementById('scon').innerHTML=D.skills.map(s=>`
+    <div class="skg"><div class="skgl">${s.area}</div>
+    <div class="skps">${s.items.map(i=>`<span class="skp">${i}</span>`).join('')}</div></div>`).join('');
 
-                container.appendChild(wordEl);
+  document.getElementById('econ').innerHTML=D.education.map(e=>`
+    <div class="card ecard">
+      <div class="eper">${e.period}</div>
+      ${e.gpa?`<span class="egpa">GPA ${e.gpa}</span><br>`:''}
+      <div class="etitle">${e.degree}</div>
+      <div class="esc">${e.school}</div>
+      <div class="edet">${e.detail}</div>
+    </div>`).join('');
+}
 
-                animateWord(wordEl);
-            }
-        }
+/* ═══════════════════════════════════════
+   RENDER WRITING
+═══════════════════════════════════════ */
+function renderW(){
+  document.getElementById('wcon').innerHTML=D.writing.map(w=>`
+    <a href="${w.link}" target="_blank" class="card wcard">
+      <div class="wtags">${w.tags.map(t=>`<span class="wtag">${t}</span>`).join('')}</div>
+      <div class="wtitle">${w.title}</div>
+      <div class="wsumm">${w.summary}</div>
+      <div class="wfoot">
+        <div class="wmeta"><span>${w.date}</span>${w.time?`<span>${w.time}</span>`:''}</div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>`).join('');
+}
 
-        function animateWord(el) {
-            const depth = parseFloat(el.dataset.depth);
-            // Farther words (low depth) move slower
-            const speedFactor = 0.5 + depth;
-            const duration = (40 + Math.random() * 60) / speedFactor;
+/* ═══════════════════════════════════════
+   RENDER CONTACT
+═══════════════════════════════════════ */
+function renderC(){
+  const p=D.profile;
+  const lnks=[
+    {l:"Direct Email",v:p.email,h:`mailto:${p.email}`,i:`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`},
+    {l:"GitHub",v:"@prosunkdatta",h:p.github,i:`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>`},
+    {l:"LinkedIn",v:"@prosunkdatta",h:p.linkedin,i:`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>`},
+    {l:"Medium",v:"@prosunkdatta",h:p.medium,i:`<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>`},
+    {l:"Twitter / X",v:"@prosunkdatta",h:p.twitter,i:`<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>`},
+   {l:"ORCID iD",v:"0009-0004-2557-9095",h:p.orcid,i:`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M8 8h.01"/><path d="M12 8h4v8h-4z"/><path d="M8 12v4"/></svg>`}
+   ];
+  document.getElementById('ccon').innerHTML=lnks.map(x=>`
+    <a href="${x.h}" target="${x.h.startsWith('mailto')?'_self':'_blank'}" class="cc">
+      <div class="ci">${x.i}</div>
+      <div><div class="clbl">${x.l}</div><div class="cval">${x.v}</div></div>
+      <svg style="margin-left:auto;flex-shrink:0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+    </a>`).join('');
+}
 
-            const moveX = (Math.random() > 0.5 ? 1 : -1) * (100 + Math.random() * 400);
-            const moveY = (Math.random() > 0.5 ? 1 : -1) * (50 + Math.random() * 200);
-            const rotation = -15 + Math.random() * 30;
+/* ═══════════════════════════════════════
+   FLOATING WORDS — exact original logic
+═══════════════════════════════════════ */
+function initFloatingWords(){
+  const container=document.getElementById('canvas-container');
+  const words=D.floatingWords;
+  const numWords=35;
+  for(let i=0;i<numWords;i++){
+    const el=document.createElement('div');
+    el.className='floating-word';
+    el.innerText=words[Math.floor(Math.random()*words.length)];
+    const startX=Math.random()*window.innerWidth;
+    const startY=Math.random()*window.innerHeight;
+    const fontSize=10+Math.random()*30;
+    const depth=Math.random();
+    el.style.left=`${startX}px`;
+    el.style.top=`${startY}px`;
+    el.style.fontSize=`${fontSize}px`;
+    el.style.filter=`blur(${(1-depth)*3}px)`;
+    const baseOpacity=0.05+(depth*0.1);
+    el.style.opacity=baseOpacity;
+    el.dataset.baseOpacity=baseOpacity;
+    el.dataset.depth=depth;
+    container.appendChild(el);
+    animateWord(el);
+  }
+}
+function animateWord(el){
+  const depth=parseFloat(el.dataset.depth);
+  const speedFactor=0.5+depth;
+  const duration=(40+Math.random()*60)/speedFactor;
+  const moveX=(Math.random()>.5?1:-1)*(100+Math.random()*400);
+  const moveY=(Math.random()>.5?1:-1)*(50+Math.random()*200);
+  const rotation=-15+Math.random()*30;
+  gsap.to(el,{x:`+=${moveX}`,y:`+=${moveY}`,rotation:rotation,duration:duration,ease:"none",
+    onComplete:()=>{
+      gsap.to(el,{opacity:0,duration:3,onComplete:()=>{
+        el.style.left=`${Math.random()*window.innerWidth}px`;
+        el.style.top=`${Math.random()*window.innerHeight}px`;
+        gsap.set(el,{x:0,y:0,rotation:0});
+        gsap.to(el,{opacity:el.dataset.baseOpacity,duration:3,onComplete:()=>animateWord(el)});
+      }});
+    }
+  });
+}
 
-            gsap.to(el, {
-                x: `+=${moveX}`,
-                y: `+=${moveY}`,
-                rotation: rotation,
-                duration: duration,
-                ease: "none",
-                onComplete: () => {
-                    gsap.to(el, {
-                        opacity: 0,
-                        duration: 3,
-                        onComplete: () => {
-                            el.style.left = `${Math.random() * window.innerWidth}px`;
-                            el.style.top = `${Math.random() * window.innerHeight}px`;
-                            gsap.set(el, { x: 0, y: 0, rotation: 0 });
+/* ═══════════════════════════════════════
+   TYPEWRITER
+═══════════════════════════════════════ */
+function initTW(){
+  const el=document.getElementById('htw'),ph=D.tw;
+  let pi=0,ci=0,del=false;
+  function tick(){
+    const c=ph[pi];
+    if(!del){ci++;el.textContent=c.slice(0,ci);if(ci===c.length){del=true;setTimeout(tick,1900);return;}}
+    else{ci--;el.textContent=c.slice(0,ci);if(ci===0){del=false;pi=(pi+1)%ph.length;setTimeout(tick,400);return;}}
+    setTimeout(tick,del?44:78);
+  }
+  tick();
+}
 
-                            gsap.to(el, {
-                                opacity: el.dataset.baseOpacity,
-                                duration: 3,
-                                onComplete: () => animateWord(el)
-                            });
-                        }
-                    });
-                }
-            });
-        }
+/* ═══════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════ */
+function initProgress(){
+  const bar=document.getElementById('progress');
+  window.addEventListener('scroll',()=>{
+    const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+    bar.style.width=pct+'%';
+  });
+}
 
-        function initScrollAnimations() {
-            gsap.registerPlugin(ScrollTrigger);
+/* ═══════════════════════════════════════
+   NAV: solid state + active section
+═══════════════════════════════════════ */
+function initNav(){
+  const nav=document.getElementById('nav');
+  const links=document.querySelectorAll('.nl[data-s]');
+  const secs=['about','research','projects','skills','writing','contact'];
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('solid',window.scrollY>40);
+    let cur='';
+    secs.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&window.scrollY>=el.offsetTop-130) cur=id;
+    });
+    links.forEach(l=>l.classList.toggle('on',l.dataset.s===cur));
+  });
+  const hbg=document.getElementById('hbg');
+  hbg.addEventListener('click',function(){
+    this.classList.toggle('open');
+    document.getElementById('nmenu').classList.toggle('open');
+  });
+  links.forEach(l=>l.addEventListener('click',()=>{
+    hbg.classList.remove('open');
+    document.getElementById('nmenu').classList.remove('open');
+  }));
+}
 
-            // Fade in sections on scroll
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                gsap.fromTo(section,
-                    { y: 40, opacity: 0 },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        duration: 1.2,
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: section,
-                            start: "top 85%",
-                        }
-                    }
-                );
-            });
+/* ═══════════════════════════════════════
+   GSAP SCROLL ANIMATIONS
+═══════════════════════════════════════ */
+function initAnim(){
+  gsap.registerPlugin(ScrollTrigger);
+  /* Hero stagger */
+  gsap.fromTo('#hero .rv',{y:24,opacity:0},{y:0,opacity:1,duration:1,ease:'power3.out',stagger:.16,delay:.18});
+  /* All other .rv on scroll */
+  document.querySelectorAll('.rv:not(#hero .rv)').forEach(el=>{
+    gsap.fromTo(el,{y:28,opacity:0},{y:0,opacity:1,duration:.9,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+  /* Count-up stats */
+  document.querySelectorAll('.sn[data-t]').forEach(el=>{
+    const t=+el.dataset.t;
+    ScrollTrigger.create({trigger:el,start:'top 92%',once:true,
+      onEnter:()=>{let c=0;(function s(){c++;el.textContent=c;if(c<t)setTimeout(s,190);})();}
+    });
+  });
+  /* Floating words parallax — original */
+  gsap.to('#canvas-container',{
+    yPercent:15,ease:"none",
+    scrollTrigger:{trigger:"body",start:"top top",end:"bottom bottom",scrub:1}
+  });
+}
 
-            // Subtle parallax for the floating words container
-            gsap.to('#canvas-container', {
-                yPercent: 15,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: "body",
-                    start: "top top",
-                    end: "bottom bottom",
-                    scrub: 1
-                }
-            });
-        }
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', () => {
-            render();
-            initFloatingWords();
-            initScrollAnimations();
-
-            // Handle window resize for floating words
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    const container = document.getElementById('canvas-container');
-                    container.innerHTML = '';
-                    initFloatingWords();
-                }, 500);
-            });
-        });
-    </script>
+/* ═══════════════════════════════════════
+   BOOT
+═══════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded',()=>{
+  boot(); renderR(); renderP(); renderSE(); renderW(); renderC();
+  initFloatingWords(); initTW(); initProgress(); initNav();
+  requestAnimationFrame(initAnim);
+  /* Resize handler for floating words */
+  let rt;
+  window.addEventListener('resize',()=>{
+    clearTimeout(rt); rt=setTimeout(()=>{
+      document.getElementById('canvas-container').innerHTML='';
+      initFloatingWords();
+    },500);
+  });
+});
+</script>
 </body>
-
 </html>
